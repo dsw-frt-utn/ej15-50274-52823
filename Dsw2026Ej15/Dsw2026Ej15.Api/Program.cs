@@ -11,6 +11,7 @@ namespace Dsw2026Ej15.Api
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllers();
+            builder.Services.AddSwaggerGen();
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddSingleton<IPersistence, PersistenceInMemory>();
@@ -18,6 +19,11 @@ namespace Dsw2026Ej15.Api
             builder.Services.AddHealthChecks();
 
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment()){
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseMiddleware<ExceptionMiddleware>();
 
