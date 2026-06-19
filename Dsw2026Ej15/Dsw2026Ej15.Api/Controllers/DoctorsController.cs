@@ -42,7 +42,7 @@ namespace Dsw2026Ej15.Api.Controllers
             _persistence.AddDoctor(doctor);
 
             return Created(string.Empty, null);
-            return Created(string.Empty, null);
+           
         }
 
         [HttpGet("doctors")]
