@@ -8,3 +8,18 @@ Content-Type: application/json
   "licenseNumber": "MP1234",
   "specialityId": "8a1f3b78-3f66-4d68-8d6e-1c5b9c7a2f41"
 }
+
+###
+
+GET {{Dsw2026Ej15.Api_HostAddress}}/api/doctors
+Accept: application/json
+###
+
+GET {{Dsw2026Ej15.Api_HostAddress}}/api/doctors/e19b8b7a-636b-4e31-b667-9ebee6078cf2
+Accept: application/json
+###
+
+DELETE {{Dsw2026Ej15.Api_HostAddress}}/api/doctors/e19b8b7a-636b-4e31-b667-9ebee6078cf2
+###
+
+GET {{Dsw2026Ej15.Api_HostAddress}}/api/doctors
