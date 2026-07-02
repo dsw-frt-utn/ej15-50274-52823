@@ -36,17 +36,17 @@ namespace Dsw2026Ej15.Data
             }
         }
 
-        public Speciality? GetSpecialityById(Guid id) => _specialities.FirstOrDefault(s => s.Id == id);
+        public async Task<Speciality?> GetSpecialityByIdAsync(Guid id) => _specialities.FirstOrDefault(s => s.Id == id);
 
-        public void AddDoctor(Doctor doctor) => _doctors.Add(doctor);
+        public async Task AddDoctorAsync(Doctor doctor) => _doctors.Add(doctor);
 
-        public IEnumerable<Doctor> GetActiveDoctors() => _doctors.Where(d => d.IsActive).ToList();
+        public async Task<IEnumerable<Doctor>> GetActiveDoctorsAsync() => _doctors.Where(d => d.IsActive).ToList();
 
-        public Doctor? GetActiveDoctorById(Guid id) => _doctors.FirstOrDefault(d => d.Id == id && d.IsActive);
+        public async Task<Doctor?> GetActiveDoctorByIdAsync(Guid id) => _doctors.FirstOrDefault(d => d.Id == id && d.IsActive);
 
-        public bool DeactivateDoctor(Guid id)
+        public async Task<bool> DeactivateDoctorAsync(Guid id)
         {
-            var doctor = GetActiveDoctorById(id);
+            var doctor = await GetActiveDoctorByIdAsync(id);
             if (doctor == null) return false;
 
             doctor.IsActive = false;
