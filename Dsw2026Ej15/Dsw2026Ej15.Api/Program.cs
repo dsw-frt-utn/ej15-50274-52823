@@ -2,6 +2,7 @@
 using Dsw2026Ej15.Data;
 using Dsw2026Ej15.Domain.Interfaces;
 using Dsw2026Ej15.Api.Middlewares;
+using Microsoft.EntityFrameworkCore;
 
 namespace Dsw2026Ej15.Api
 {
@@ -14,7 +15,10 @@ namespace Dsw2026Ej15.Api
             builder.Services.AddSwaggerGen();
             builder.Services.AddEndpointsApiExplorer();
 
-            builder.Services.AddSingleton<IPersistence, PersistenceInMemory>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+             options.UseSqlite("Data Source=doctors.db"));
+
+            builder.Services.AddScoped<IPersistence, PersistenceEF>();
 
             builder.Services.AddHealthChecks();
 
